@@ -1,0 +1,2 @@
+npm install express mongoose body-parser moment-timezone bcrypt numeral axios
+node server.js

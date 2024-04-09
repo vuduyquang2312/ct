@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Open Sans", sans-serif;
+            /* background-image: url("https://wallpapercave.com/wp/wp9764031.jpg"); */
+            font-weight: 400;
+
+        }
+
+        i {
+            font-weight: 400;
+        }
+
+        /* Style cho main */
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            background-color: #cdd4f8;
+        }
+
+        /* Style cho table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 50px;
+        }
+
+        th,
+        td {
+            border: 1px solid #000000;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #fff;
+            text-align: center;
+        }
+
+        /* Style cho li và a */
+        li {
+            list-style-type: none;
+            margin-bottom: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+        }
+
+        a {
+            text-decoration: none;
+            font-weight: 400;
+            color: #1a1a1a;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        a:hover {
+            background-color: #b4b5bd;
+        }
+    </style><!-- Liên kết đến tệp CSS -->
+</head>
+
+<body>
+    <main>
+        <table id="userTable">
+            <li><a href="#userList" id="user">Thông tin tài khoản trên hệ thống</a></li>
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th><i class="fa-solid fa-user"></i></th>
+                    <th><i class="fa-solid fa-lock"></i></th>
+                    <th><i class="fa-solid fa-envelope"></i></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dữ liệu từ API sẽ được thêm vào đây -->
+            </tbody>
+        </table>
+
+        <table id="historyLogin">
+            <li><a href="#historyLogin">Lịch sử khách hàng đăng nhập</a>
+            </li>
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th><i class="fa-solid fa-user"></i></th>
+                    <th><i class="fa-solid fa-clock"></i></th>
+                    <th><i class="fa-solid fa-location-dot"></i></th>
+                </tr>
+            </thead>
+            <tbody id="loginHistoryData">
+                <!-- Dữ liệu từ API sẽ được thêm vào đây -->
+            </tbody>
+        </table>
+
+        <table id="productTable">
+            <li><a href="#productList" id="product">Danh sách người dùng thêm vào giỏ
+                    hàng</a></li>
+            <thead> <!-- Thêm thead để chứa các thẻ <th> -->
+                <tr> <!-- Thêm hàng <tr> để chứa các thẻ <th> -->
+                    <th>STT</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th><i class="fa-solid fa-user"></i></th>
+                    <th><i class="fa-solid fa-clock"></i></th>
+                    <th><i class="fa-solid fa-money-bill"></i></th>
+                    <th>Tổng số tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Product data will be dynamically inserted here -->
+            </tbody>
+            <tfoot>
+                <!-- Dòng tổng số tiền sẽ được thêm vào đây -->
+            </tfoot>
+        </table>
+
+
+        <table id="customersTable">
+            <li><a href="#potentialCustomers" id="customer">Thông tin khách hàng</a>
+            </li>
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th><i class="fa-solid fa-user"></i></th>
+                    <th><i class="fa-solid fa-address-card"></i></th>
+                    <th><i class="fa-solid fa-phone"></i></th>
+                    <th><i class="fa-solid fa-envelope"></i></th>
+                    <th><i class="fa-solid fa-address-book"></i></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dữ liệu từ API sẽ được thêm vào đây -->
+            </tbody>
+        </table>
+
+        <table id="rfmTable">
+            <li><a href="#rfmPoint" id="customer">RFM</a></li>
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Tên tài khoản</th>
+                    <th>Thời gian mua hàng gần nhất</th>
+                    <th>Số lần mua hàng</th>
+                    <th>Tổng giá trị đơn hàng</th>
+                    <th>Nhóm khách hàng</th>
+                </tr>
+            </thead>
+            <tbody id="rfmTableBody">
+                <!-- Dữ liệu từ API sẽ được thêm vào đây -->
+            </tbody>
+        </table>
+
+
+
+    </main>
+    <footer>
+        <!-- Footer content -->
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const userTableBody = document.querySelector('#userTable tbody');
+            const productTableBody = document.querySelector('#productTable tbody');
+            const customersTableBody = document.querySelector('#customersTable tbody');
+
+            // Lấy và hiển thị dữ liệu người dùng
+            fetch('http://localhost:3000/api/users')
+                .then(response => response.json())
+                .then(users => {
+                    users.forEach((user, index) => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${index + 1}</td>
+                            <td>${user.username}</td>
+                            <td>${user.password}</td>
+                            <td>${user.email}</td>
+                        `;
+                        userTableBody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Lỗi khi lấy dữ liệu từ API:', error));
+
+            // Lấy và hiển thị dữ liệu sản phẩm
+            // Hàm chuyển đổi thời gian từ ISO 8601 sang ngày-tháng-năm-giờ-phút-giây
+            function formatDate(isoDate) {
+                const date = new Date(isoDate);
+                const day = date.getDate().toString().padStart(2, '0'); // Lấy ngày và thêm '0' nếu cần
+                const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Lấy tháng (lưu ý tháng bắt đầu từ 0) và thêm '0' nếu cần
+                const year = date.getFullYear();
+                const hours = date.getHours().toString().padStart(2, '0'); // Lấy giờ và thêm '0' nếu cần
+                const minutes = date.getMinutes().toString().padStart(2, '0'); // Lấy phút và thêm '0' nếu cần
+                const seconds = date.getSeconds().toString().padStart(2, '0'); // Lấy giây và thêm '0' nếu cần
+                return `${hours}:${minutes}:${seconds} ${day}-${month}-${year}`;
+            }
+
+            // Fetch dữ liệu từ API và hiển thị trên giao diện
+            fetch('http://localhost:3000/products')
+                .then(response => response.json())
+                .then(products => {
+                    let totalPrice = 0;
+                    products.forEach((product, index) => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${product.name}</td>
+                <td>${product.clickCount}</td>
+                <td>${product.username}</td>
+                <td>${formatDate(product.createdAt)}</td>
+                <td>${product.price}</td>
+                <td>${formatPriceToVND(product.totalPrice)}</td>
+            `;
+                        productTableBody.appendChild(row);
+                        totalPrice += parseFloat(product.totalPrice);
+                    });
+                    const totalRow = document.createElement('tr');
+                    totalRow.innerHTML = `
+            <td colspan="5"></td>
+            <td><strong>Tổng:</strong></td>
+            <td>${formatPriceToVND(totalPrice)}</td>
+        `;
+                    productTableBody.appendChild(totalRow);
+                })
+                .catch(error => console.error('Lỗi khi lấy dữ liệu sản phẩm:', error)); // Xử lý lỗi khi fetch dữ liệu từ API
+
+            fetch('/api/loginInfo')
+                .then(response => response.json())
+                .then(data => {
+                    const loginHistoryTable = document.getElementById('loginHistoryData');
+
+                    // Duyệt qua mỗi dòng dữ liệu và thêm vào bảng
+                    data.forEach((item, index) => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${item.username}</td>
+                    <td>${item.loginTime}</td>
+                    <td>${item.ipAddress}</td>
+                `;
+                        loginHistoryTable.appendChild(row);
+                    });
+                })
+                .catch(error => {
+                    console.error('Đã xảy ra lỗi khi lấy dữ liệu từ API:', error);
+                });
+
+            // Lấy và hiển thị dữ liệu khách hàng
+            fetch('http://localhost:3000/api/datas')
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach((customer, index) => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${index + 1}</td>
+                            <td>${customer.username}</td>
+                            <td>${customer.fullName}</td>
+                            <td>${customer.phoneNumber}</td>
+                            <td>${customer.email}</td>
+                            <td>${customer.address}</td>
+                        `;
+                        customersTableBody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Lỗi khi lấy dữ liệu từ API:', error));
+
+            // Hàm định dạng giá tiền sang VND
+            const formatPriceToVND = (price) => {
+                return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
+            };
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const rfmTableBody = document.querySelector('#rfmTableBody');
+
+            // Lấy và hiển thị dữ liệu từ API
+            fetch('http://localhost:3000/api/statistics')
+                .then(response => response.json())
+                .then(statistics => {
+                    statistics.forEach((statistic, index) => {
+                        // Loại bỏ ký tự đặc biệt và chuyển đổi thành số
+                        const totalMonetary = parseFloat(statistic.totalMonetary.replace(/[^\d.-]/g, ''));
+
+                        // Phân loại nhóm khách hàng
+                        let customerGroup = '';
+                        if (statistic.totalFrequency >= 10 && totalMonetary >= 10000000) {
+                            customerGroup = 'VIP';
+                        } else if (statistic.totalFrequency >= 5 && totalMonetary >= 5000000) {
+                            customerGroup = 'Thường xuyên';
+                        } else {
+                            customerGroup = 'Mới';
+                        }
+
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${statistic.username}</td>  
+                    <td>${statistic.latestPurchaseText}</td>
+                    <td>${statistic.totalFrequency}</td>
+                    <td>${statistic.totalMonetary}</td>
+                    <td>${customerGroup}</td>
+                `;
+                        rfmTableBody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Error fetching statistics data:', error));
+        });
+
+
+    </script>
+</body>
+
+</html>
